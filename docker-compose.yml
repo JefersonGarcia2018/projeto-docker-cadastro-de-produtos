@@ -1,0 +1,33 @@
+services: # Define os serviços do Docker Compose
+  # Backend Laravel
+  api: # Nome do serviço para o backend Laravel
+    build: # Define a construção do serviço
+      context: ./api # Diz ao Docker para buildar o Dockerfile desta pasta
+    container_name: laravel_api # Nome do container para o serviço Laravel
+    working_dir: /var/www # Define o [ diretório de trabalho ] dentro do container
+    volumes: # Monta o volume para sincronizar o código fonte do Laravel
+      - ./api:/var/www
+    ports: # Mapeia a porta 8000 do host para a porta 8000 do container
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000 # Comando para iniciar o servidor Laravel
+    depends_on: # Define a dependência do serviço Laravel em relação ao serviço de banco de dados
+      - db
+
+  # Frontend Vue 3 + Quasar
+  spa: # Nome do serviço para o frontend Vue 3 + Quasar
+    image: node:20-alpine # Usa a imagem oficial do Node.js para o ambiente de desenvolvimento.
+    container_name: vue_spa # Nome do container para o serviço Vue 3 + Quasar
+    working_dir: /app # Define o [ diretório de trabalho ] dentro do container
+    volumes: # Monta o volume para sincronizar o código fonte do Vue 3 + Quasar
+      - ./spa:/app
+    ports: # Mapeia a porta 9000 do host para a porta 9000 do container
+      - "9000:9000"
+    command: sh -c "npm install && npm run dev" # Comando para instalar as dependências e iniciar o servidor de desenvolvimento do Vue 3 + Quasar
+
+  # Banco de Dados
+  db: # Nome do serviço para o banco de dados MySQL
+    image: mysql:8.0 # Usa a imagem oficial do MySQL 8.0 para o banco de dados
+    container_name: mysql_db # Nome do container para o serviço de banco de dados
+    environment: # Define as variáveis de ambiente para configurar o banco de dados
+      MYSQL_DATABASE: cadastro_produtos_db # Nome do banco de dados a ser criado
+      MYSQL_ROOT_PASSWORD: root # Senha do usuário root do MySQL
