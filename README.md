@@ -1,5 +1,9 @@
 # Projeto Cadastro de Produtos (Full Stack) 🚀
 
+<p align="center">
+  <img src="img/img_sistema.png" alt="Screenshot do Sistema de Produtos" width="100%">
+</p>
+
 Este é um sistema completo de cadastro de produtos desenvolvido com **Laravel** no backend, **Vue.js + Quasar** no frontend e **Docker** para orquestração de ambiente.
 
 O projeto foi construído focado em boas práticas de desenvolvimento, utilizando uma arquitetura de API REST e SPA (Single Page Application).
