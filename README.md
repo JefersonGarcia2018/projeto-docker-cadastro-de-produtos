@@ -82,19 +82,3 @@ Após seguir os passos acima, você poderá acessar o sistema nos seguintes ende
 ## 📄 Licença
 
 Este projeto foi desenvolvido para fins de estudo e prática de desenvolvimento Full Stack.
-
-````
-
----
-
-### Como salvar isso no GitHub agora?
-
-1.  Crie o arquivo: `touch README.md` (ou use o VS Code).
-2.  Cole o texto acima e salve.
-3.  No terminal, envie a atualização:
-
-```bash
-git add README.md
-git commit -m "docs: adicionando documentação do projeto no README"
-git push origin main
-````
